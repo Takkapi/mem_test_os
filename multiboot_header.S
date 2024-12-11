@@ -10,5 +10,8 @@
 .global _start
 .type _start, @function
 _start:
-    # Placeholder for the actual start code
-    jmp main_entry_point
+    # Save the multiboot information structure pointer
+    mov %eax, %ebx
+
+    # Jump to the C++ entry point
+    call main_entry_point
