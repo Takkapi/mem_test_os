@@ -6,6 +6,7 @@
 #include "ui.h"
 #include "shutdown.h"
 #include "snprintf.h"
+#include "multiboot.h"
 
 // Multiboot information structure provided by GRUB
 struct multiboot_info_t {
@@ -68,7 +69,7 @@ extern "C" void kernel_main() {
     }
 }
 
-extern "C" void _start(uintptr_t* mbi) {
+extern "C" void main_entry_point(uintptr_t* mbi) {
     // Initialize multiboot_info
     multiboot_info = reinterpret_cast<multiboot_info_t*>(mbi);
     kernel_main();
