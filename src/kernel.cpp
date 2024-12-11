@@ -7,12 +7,7 @@
 #include "shutdown.h"
 #include "snprintf.h"
 
-extern "C" {
-    // Ensure multiboot_info is defined in a writable section
-    __attribute__((section(".bss"))) multiboot_info_t* multiboot_info;
-}
-
-// Multiboo information structure provided by GRUB
+// Multiboot information structure provided by GRUB
 struct multiboot_info_t {
     uint32_t flags;
     uint32_t mem_lower;
@@ -20,11 +15,17 @@ struct multiboot_info_t {
     // Other fields are omitted for simplicity
 };
 
+extern "C" {
+    // Ensure multiboot_info is defined in a writable section
+    __attribute__((section(".bss"))) multiboot_info_t* multiboot_info;
+}
+
 extern "C" void kernel_main() {
     // Initialize the screen
     init_screen();
 
-    display_message("Memory Test v0.0.1");
+    // Display a welcome message
+    display_message("Memory Test OS v0.0.1");
 
     // Get the total amount of memory
     uintptr_t memory_start = 0x000000; // 0MB
@@ -66,7 +67,8 @@ extern "C" void kernel_main() {
     }
 }
 
-extern "C" void _start(multiboot_info_t* mbi) {
-    multiboot_info = mbi;
+extern "C" void _start(uintptr_t* mbi) {
+    // Initialize multiboot_info
+    multiboot_info = reinterpret_cast<multiboot_info_t*>(mbi);
     kernel_main();
 }
