@@ -17,7 +17,7 @@ efi_image: $(OBJ)
 	mmd -i efi_image.img ::/EFI ::/EFI/BOOT
 	mcopy -i efi_image.img EFI/BOOT/BOOTX64.EFI ::/EFI/BOOT/
 	mcopy -i efi_image.img EFI/BOOT/kernel.bin ::/EFI/BOOT/
-	mcopy -f efi_image.img EFI/BOOT/grub.cfg ::/EFI/BOOT/
+	mcopy -i efi_image.img EFI/BOOT/grub.cfg ::/EFI/BOOT/
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
