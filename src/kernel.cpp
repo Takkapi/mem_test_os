@@ -29,7 +29,7 @@ extern "C" void kernel_main() {
     display_message("Memory Test OS v0.0.1");
 
     // Get the total amount of memory
-    uintptr_t memory_start = 0x000000; // 0MB
+    uintptr_t memory_start = 0x100000; // 1MB
     uintptr_t memory_end = (multiboot_info->mem_upper * 1024); // Upper memory is in KB
 
     // Display memory information

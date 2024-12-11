@@ -13,7 +13,7 @@
 #define MULTIBOOT_HEADER_CHECKSUM (uint32_t)(-(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS))
 
 // Multiboot header structure
-__attribute__((section(".multiboot")))
+__attribute__((section(".multiboot"), used))
 const struct {
     uint32_t magic;
     uint32_t flags;
