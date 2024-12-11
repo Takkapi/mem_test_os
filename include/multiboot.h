@@ -10,7 +10,7 @@
 #define MULTIBOOT_HEADER_FLAGS 0x00010003
 
 // Checksum of the multiboot header
-#define MULTIBOOT_HEADER_CHECKSUM -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
+#define MULTIBOOT_HEADER_CHECKSUM (uint32_t)(-(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS))
 
 // Multiboot header structure
 __attribute__((section(".multiboot")))
