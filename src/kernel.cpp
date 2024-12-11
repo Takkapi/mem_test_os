@@ -81,21 +81,10 @@ const struct {
 //     }
 // }
 
-void write_string(const char* str) {
-    volatile char* video = (volatile char*) 0xB8000;
-    while(*str) {
-        *video++ = *str++;
-        *video++ = 0x07;
-    }
-}
-
-extern "C" void _start(uintptr_t* mbi) {
+extern "C" void _start(uintptr_t mbi) {
     // Initialize multiboot_info
     // multiboot_info = reinterpret_cast<multiboot_info_t*>(mbi);
     // kernel_main();
-
-    // DEBUG!
-    write_string("Hello");
 
     while(1) {
         asm volatile("hlt");
