@@ -7,15 +7,18 @@
 #include "shutdown.h"
 #include "snprintf.h"
 
+extern "C" {
+    // Ensure multiboot_info is defined in a writable section
+    __attribute__((section(".bss"))) multiboot_info_t* multiboot_info;
+}
+
+// Multiboo information structure provided by GRUB
 struct multiboot_info_t {
     uint32_t flags;
     uint32_t mem_lower;
     uint32_t mem_upper;
     // Other fields are omitted for simplicity
 };
-
-// External symbols defined by the linker script
-extern "C" multiboot_info_t* multiboot_info;
 
 extern "C" void kernel_main() {
     // Initialize the screen
