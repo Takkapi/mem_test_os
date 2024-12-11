@@ -8,7 +8,7 @@ all: os_image
 
 os_image: $(OBJ)
 	$(CXX) -T linker.ld -o kernel.bin -ffreestanding -O2 -nostdlib $(OBJ) -lgcc
-	mkdir -p iso/boot
+	mkdir -p iso/boot/grub
 	cp kernel.bin iso/boot/kernel.bin
 	cp grub.cfg iso/boot/grub/grub.cfg
 	grub-mkrescue -o mem_test.iso iso
