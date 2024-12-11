@@ -1,4 +1,3 @@
-#include "multiboot.h"
 #include <stddef.h>
 #include <stdint.h>
 
@@ -7,6 +6,19 @@
 #include "ui.h"
 #include "shutdown.h"
 #include "snprintf.h"
+#include "multiboot.h"
+
+// Multiboot header structure
+__attribute__((section(".multiboot"), used))
+const struct {
+    uint32_t magic;
+    uint32_t flags;
+    uint32_t checksum;
+} multiboot_header = {
+    MULTIBOOT_HEADER_MAGIC,
+    MULTIBOOT_HEADER_FLAGS,
+    MULTIBOOT_HEADER_CHECKSUM
+};
 
 // Multiboot information structure provided by GRUB
 struct multiboot_info_t {
