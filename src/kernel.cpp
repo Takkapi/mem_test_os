@@ -95,7 +95,15 @@ extern "C" void _start(uintptr_t mbi) {
     // kernel_main();
 
     // DEBUG!
-    write_string("Hello");
+    extern char text_start, _end;
+    // Print diagnostic information
+    write_string("Boot successful\n");
+    write_string("Text start: ");
+    //Convert and print addresses
+    write_string(reinterpret_cast<char*>(&text_start));
+    write_string("\nEnd: ");
+    write_string(reinterpret_cast<char*>(&_end));
+
 
     while(1) {
         asm volatile("hlt");
