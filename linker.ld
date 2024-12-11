@@ -7,4 +7,5 @@ SECTIONS
     .rodata : { *(.rodata) }
     .data : { *(.data) }
     .bss : { *(COMMON) *(.bss) }
+    .end : { PROVIDE(_end = .); }
 }
