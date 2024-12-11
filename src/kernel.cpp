@@ -6,6 +6,7 @@
 #include "ui.h"
 #include "shutdown.h"
 #include "snprintf.h"
+#include "multiboot.h"
 
 // Multiboot information structure provided by GRUB
 struct multiboot_info_t {
