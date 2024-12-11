@@ -9,7 +9,7 @@
 #include "multiboot.h"
 
 // Multiboot header structure
-__attribute__((section(".multiboot"), used))
+extern "C" __attribute__((section(".multiboot"), used))
 const struct {
     uint32_t magic;
     uint32_t flags;
