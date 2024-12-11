@@ -6,7 +6,6 @@
 #include "ui.h"
 #include "shutdown.h"
 #include "snprintf.h"
-#include "multiboot.h"
 
 // Multiboot information structure provided by GRUB
 struct multiboot_info_t {
@@ -37,6 +36,7 @@ extern "C" void kernel_main() {
     snprintf(buffer, sizeof(buffer), "Memory: %uKB lower, %uKB upper", multiboot_info->mem_lower, multiboot_info->mem_upper);
     display_message(buffer);
 
+    // memory testing
     display_message("Testing memory. Please wait!...");
     bool memory_ok = test_memory(memory_start, memory_end);
 
