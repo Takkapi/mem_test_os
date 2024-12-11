@@ -8,7 +8,7 @@ SECTIONS
         *(.text)
     }
     .text : {
-        PROVIDE(test_start = .);
+        PROVIDE(text_start = .);
         *(.text)
     }
     .rodata : { *(.rodata) }
