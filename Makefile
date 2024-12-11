@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -ffreestanding -O2 -Wall -Wextra
 
 SRC = $(wildcard src/*.cpp)
-OBJ = $(SRC:.cpp=.0)
+OBJ = $(SRC:.cpp=.o)
 
 all: os_image
 
